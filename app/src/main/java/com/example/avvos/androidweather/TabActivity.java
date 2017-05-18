@@ -118,12 +118,12 @@ public class TabActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 1)
             {
-                View rootView = inflater.inflate(R.layout.fragment_kite_surfing, container, false);
+                View rootView = inflater.inflate(R.layout.fragment_paragliding, container, false);
                 return rootView;
             }
             else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2)
             {
-                View rootView = inflater.inflate(R.layout.fragment_paragliding, container, false);
+                View rootView = inflater.inflate(R.layout.fragment_kite_surfing, container, false);
                 return rootView;
             }
             else if(getArguments().getInt(ARG_SECTION_NUMBER) == 3)
