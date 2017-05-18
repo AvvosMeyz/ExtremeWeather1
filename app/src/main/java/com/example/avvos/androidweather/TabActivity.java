@@ -116,10 +116,40 @@ public class TabActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_tab, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
+            if(getArguments().getInt(ARG_SECTION_NUMBER) == 1)
+            {
+                View rootView = inflater.inflate(R.layout.fragment_kite_surfing, container, false);
+                return rootView;
+            }
+            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2)
+            {
+                View rootView = inflater.inflate(R.layout.fragment_paragliding, container, false);
+                return rootView;
+            }
+            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 3)
+            {
+                View rootView = inflater.inflate(R.layout.fragment_skiing, container, false);
+                return rootView;
+            }
+            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 3)
+            {
+                View rootView = inflater.inflate(R.layout.fragment_skiing, container, false);
+                return rootView;
+            }
+            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 4)
+            {
+                View rootView = inflater.inflate(R.layout.fragment_climbing, container, false);
+                return rootView;
+            }
+            else
+            {
+                View rootView = inflater.inflate(R.layout.fragment_tab, container, false);
+                TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+                textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+                return rootView;
+            }
+
+
         }
     }
 
@@ -143,18 +173,20 @@ public class TabActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 4;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "Paragliding";
                 case 1:
-                    return "SECTION 2";
+                    return "Kite Surfing";
                 case 2:
-                    return "SECTION 3";
+                    return "Skiing";
+                case 3:
+                    return "Climbing";
             }
             return null;
         }
