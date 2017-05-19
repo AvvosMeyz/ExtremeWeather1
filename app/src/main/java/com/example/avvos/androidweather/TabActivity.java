@@ -1,5 +1,6 @@
 package com.example.avvos.androidweather;
 
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class TabActivity extends AppCompatActivity {
@@ -30,6 +33,8 @@ public class TabActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+
+    String[] PARAMETRES = {"05:00", "20C", "Nord", "5m/sn", "%0","1pA" };
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -63,30 +68,42 @@ public class TabActivity extends AppCompatActivity {
             }
         });
 
+        ListView meteoList  = (ListView)findViewById(R.id.meteoList);
+
+        CustomAdapter customAdapter = new CustomAdapter();
+
+        meteoList.setAdapter(customAdapter);
     }
 
+    class CustomAdapter extends BaseAdapter{
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_tab, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        @Override
+        public int getCount() {
+            return PARAMETRES.length;
         }
 
-        return super.onOptionsItemSelected(item);
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            view = getLayoutInflater().inflate(R.layout.fragment_kite_surfing,null);
+
+            TextView textView9987 = (TextView)view.findViewById(R.id.textView998)
+
+            textView9987.setText(PARAMETRES[i]);
+
+            return null;
+        }
     }
+
 
     /**
      * A placeholder fragment containing a simple view.
@@ -97,6 +114,7 @@ public class TabActivity extends AppCompatActivity {
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
+        private ListView mList;
 
         public PlaceholderFragment() {
         }
@@ -116,40 +134,16 @@ public class TabActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            if(getArguments().getInt(ARG_SECTION_NUMBER) == 1)
-            {
-                View rootView = inflater.inflate(R.layout.fragment_paragliding, container, false);
-                return rootView;
-            }
-            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2)
-            {
-                View rootView = inflater.inflate(R.layout.fragment_kite_surfing, container, false);
-                return rootView;
-            }
-            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 3)
-            {
-                View rootView = inflater.inflate(R.layout.fragment_skiing, container, false);
-                return rootView;
-            }
-            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 3)
-            {
-                View rootView = inflater.inflate(R.layout.fragment_skiing, container, false);
-                return rootView;
-            }
-            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 4)
-            {
-                View rootView = inflater.inflate(R.layout.fragment_climbing, container, false);
-                return rootView;
-            }
-            else
-            {
-                View rootView = inflater.inflate(R.layout.fragment_tab, container, false);
-                TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-                textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-                return rootView;
-            }
+            View rootView = inflater.inflate(R.layout.fragment_kite_surfing, container, false);
+            return rootView;
 
+        }
 
+        @Override
+        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+
+            mList = (ListView) getActivity().findViewById(R.id.meteoList);
         }
     }
 

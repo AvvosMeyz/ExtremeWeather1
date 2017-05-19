@@ -6,6 +6,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Context;
+import android.view.Menu;
+
+import android.widget.ListView;
 import android.view.ViewGroup;
 
 import com.example.avvos.androidweather.R;
@@ -23,6 +29,7 @@ public class KiteSurfing extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -42,6 +49,8 @@ public class KiteSurfing extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment KiteSurfing.
      */
+
+
     // TODO: Rename and change types and number of parameters
     public static KiteSurfing newInstance(String param1, String param2) {
         KiteSurfing fragment = new KiteSurfing();
@@ -59,7 +68,13 @@ public class KiteSurfing extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        context=this;
+
+        lv=(ListView) findViewById(R.id.listView);
+        lv.setAdapter(new CustomAdapter(this, prgmNameList,prgmImages));
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
